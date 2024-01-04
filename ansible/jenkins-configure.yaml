@@ -4,12 +4,12 @@
   tasks:
   - name: add jenkins key
      apt_key:
-      name: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+      url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
       state: present
 
   - name: add jenkins rep
      apt_repository: 
-      name: 'https://pkg.jenkins.io/debian-stable binary/'
+      rep: 'deb https://pkg.jenkins.io/debian-stable binary/'
       state: present
 
   - name: install java
