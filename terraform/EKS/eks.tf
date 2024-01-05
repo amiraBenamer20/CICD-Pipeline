@@ -2,19 +2,19 @@ resource "aws_iam_role" "master" {
   name = "eks-master"
 
   assume_role_policy = <<POLICY
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "eks.amazonaws.com"
-            }
-            "Action": "sts:AssumeRole"
-        }
-    ]
-  }
-  POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "eks.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+POLICY
 }
 
 resource "aws_iam_role_policy_attachment" "AmazonEKSClusterPolicy" {
@@ -37,19 +37,19 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
 resource "aws_iam_role" "worker" {
   name = "eks-worker"
   assume_role_policy = <<POLICY
-  {
-    "Version": "2012-10-17",
-    "Statement":[
-        {
-            "Effect":"Allow",
-            "Principal":{
-                "Service":"ec2.amazonaws.com"
-            }
-            "Action":"sts:AssumeRole"
-        }
-    ]
-  }
-  POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "ec2.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+POLICY
 }
 
 resource "aws_iam_policy" "autoscaler" {
@@ -143,7 +143,7 @@ resource "aws_eks_node_group" "backend" {
   disk_size = "20"
   instance_types = ["t2.micro"]
 
-   labels =  tomap({env = "dev"})
+  labels =  tomap({env = "dev"})
   
   scaling_config {
     desired_size = 1
