@@ -1,4 +1,4 @@
-module "eks" {
+/*module "eks" {
   source = "../EKS"
   sg_ids = module.sg-eks.security_group_public
   vpc_id = aws_vpc.dpp-vpc.id
@@ -8,7 +8,7 @@ module "eks" {
 module "sg-eks" {
   source = "../SG-EKS"
   vpc_id = aws_vpc.dpp-vpc.id
-}
+}*/
 
 provider "aws" {
   region = "eu-west-3"
